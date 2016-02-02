@@ -21,7 +21,7 @@
     // Save bytes in the minified (but not gzipped) version:
     var ArrayProto = Array.prototype, ObjProto = Object.prototype;
 
-    // Create quick reference variables for speed access to core prototypes.
+    // Create quick reference variables for speed access to core prototypes. 这里创建变量储存原型的方法,能提升方法访问速度,不需要一层层回溯到Object对象的核心 core prototypes
     var push = ArrayProto.push,
         slice = ArrayProto.slice,
         toString = ObjProto.toString,
@@ -962,7 +962,7 @@
     // Delegates to **ECMAScript 5**'s native `Object.keys`.
     _.keys = function(obj) {
         if (!_.isObject(obj)) return [];
-        if (nativeKeys) return nativeKeys(obj);
+        if (nativeKeys) return nativeKeys(obj); //if nativeKeys exists, use js native function
         var keys = [];
         for (var key in obj) if (_.has(obj, key)) keys.push(key);
         // Ahem, IE < 9.
